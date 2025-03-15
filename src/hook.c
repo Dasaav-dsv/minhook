@@ -687,14 +687,7 @@ MH_STATUS WINAPI MH_RemoveHook(LPVOID pTarget)
         {
             if (g_hooks.pItems[pos].isEnabled)
             {
-                FROZEN_THREADS threads;
-                status = Freeze(&threads, pos, ACTION_DISABLE);
-                if (status == MH_OK)
-                {
-                    status = EnableHookLL(pos, FALSE);
-
-                    Unfreeze(&threads);
-                }
+                status = EnableHookLL(pos, FALSE);
             }
 
             if (status == MH_OK)
@@ -738,14 +731,7 @@ static MH_STATUS EnableHook(LPVOID pTarget, BOOL enable)
             {
                 if (g_hooks.pItems[pos].isEnabled != enable)
                 {
-                    FROZEN_THREADS threads;
-                    status = Freeze(&threads, pos, ACTION_ENABLE);
-                    if (status == MH_OK)
-                    {
-                        status = EnableHookLL(pos, enable);
-
-                        Unfreeze(&threads);
-                    }
+                    status = EnableHookLL(pos, enable);
                 }
                 else
                 {

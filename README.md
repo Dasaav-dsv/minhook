@@ -1,5 +1,9 @@
 # MinHook
 
+### Note about the fork
+
+Individual hook APIs ```MH_EnableHook``` and ```MH_DisableHook``` no longer freeze all threads, making them significantly faster. It is the caller's responsibility to ensure hook targets are not called from another thread before ```MH_EnableHook``` and ```MH_DisableHook``` return. *YMMV*
+
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
 The Minimalistic x86/x64 API Hooking Library for Windows
